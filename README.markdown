@@ -19,7 +19,6 @@ stringify_money
 
 Converts from decimal to money and back.
 
-StringifyStuff was inspired by Ryan Bates' Railscast on [Making a Plugin](http://railscasts.com/episodes/33-making-a-plugin).
 
 Example
 =======
@@ -49,5 +48,7 @@ Notes
 Currently, string formats for dates and money are hard-coded, but hopefully one
 day I'll make them so they're configurable without delving inside the plugin.
 
+StringifyStuff was inspired by Ryan Bates' Railscast on [Making a
+Plugin](http://railscasts.com/episodes/33-making-a-plugin).
 
 Copyright (c) 2011 Nick Morgan, released under the MIT license
