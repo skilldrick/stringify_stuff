@@ -9,14 +9,14 @@ module StringifyMoney
       class_variable_set("@@json_methods", methods)
 
       define_method "#{name}_string" do
-        read_attribute(name) &&
-          "£#{sprintf "%.2f" % read_attribute(name)}"
+        send(name) &&
+          "£#{sprintf "%.2f" % send(name)}"
       end
 
       define_method "#{name}_string=" do |val|
         begin
           parsed = Float(val.sub('£', '')).round(2)
-          write_attribute(name, parsed)
+          send("#{name}=".to_sym, parsed)
         rescue ArgumentError
           instance_variable_set("@#{name}_invalid", true)
         end
