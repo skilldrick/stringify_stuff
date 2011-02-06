@@ -6,8 +6,6 @@ module StringifyMoney
     names.each do |name|
       methods << "#{name}_string"
 
-      class_variable_set("@@json_methods", methods)
-
       define_method "#{name}_string" do
         send(name) &&
           "£#{sprintf "%.2f" % send(name)}"
