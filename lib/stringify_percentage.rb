@@ -1,7 +1,5 @@
 module StringifyPercentage
   def stringify_percentage *names
-    methods = class_variable_get("@@json_methods")
-
     names.each do |name|
       methods << "#{name}_string"
 
@@ -10,7 +8,5 @@ module StringifyPercentage
       end
 
     end
-
-    class_variable_set("@@json_methods", methods)
   end
 end

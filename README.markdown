@@ -4,11 +4,6 @@ StringifyStuff
 StringifyStuff adds virtual attributes to your models to simplify interactions
 with certain datatypes. There are currently three parts:
 
-stringify_stuff
----------------
-
-Use this to setup the variables and methods StringifyStuff needs.
-
 stringify_time
 --------------
 
@@ -19,6 +14,11 @@ stringify_money
 
 Converts from decimal to money and back.
 
+stringify_percentage
+--------------------
+
+Converts a decimal value to a percentage string
+
 
 Example
 =======
@@ -27,6 +27,7 @@ Example
       stringify_stuff
       stringify_money :cost
       stringify_time :end_date
+      stringify_percentage :margin
     end
 
 This gives you a number of useful methods:
@@ -35,12 +36,9 @@ This gives you a number of useful methods:
 * cost_string= #A setter that takes a cost string
 * end_date_string #The end_date as a formatted date string
 * end_date_string= #A setter that takes a range of formatted date strings.
+* margin_string #The margin as a percentage string
 * cost_invalid? #True if the value given to `cost_string=` was invalid
 * end_date_invalid? #True if the value given to `end_date_string=` was invalid
-
-`cost_string` and `end_date_string` are both added to the `as_json` method so
-when your model is rendered as json they will be included.
-
 
 Notes
 =====

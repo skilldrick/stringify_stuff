@@ -1,10 +1,6 @@
 module StringifyTime
   def stringify_time *names
-    methods = class_variable_get("@@json_methods")
-
     names.each do |name|
-      methods << "#{name}_string"
-
       define_method "#{name}_string" do
         read_attribute(name) &&
           read_attribute(name).strftime("%e %b %Y").strip()
@@ -24,7 +20,5 @@ module StringifyTime
         instance_variable_get("@#{name}_invalid")
       end
     end
-
-    class_variable_set("@@json_methods", methods)
   end
 end
