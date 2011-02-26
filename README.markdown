@@ -28,6 +28,9 @@ Example
       stringify_money :cost
       stringify_time :end_date
       stringify_percentage :margin
+
+      validate :money_strings_invalid?, :time_strings_invalid?,
+        :percentage_strings_invalid?
     end
 
 This gives you a number of useful methods:
@@ -37,8 +40,9 @@ This gives you a number of useful methods:
 * end_date_string #The end_date as a formatted date string
 * end_date_string= #A setter that takes a range of formatted date strings.
 * margin_string #The margin as a percentage string
-* cost_invalid? #True if the value given to `cost_string=` was invalid
-* end_date_invalid? #True if the value given to `end_date_string=` was invalid
+* money_strings_invalid? #Validation method for methods passed to `stringify_money`
+* time_strings_invalid? #Validation method for methods passed to `stringify_time`
+* percentage_strings_invalid? #Validation method for methods passed to `stringify_percentage`
 
 Notes
 =====
