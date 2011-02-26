@@ -21,5 +21,13 @@ module StringifyMoney
         instance_variable_get("@#{name}_invalid")
       end
     end
+
+    define_method "money_strings_valid?" do
+      names.each do |name|
+        if instance_variable_get("@#{name}_invalid")
+          errors.add(name, "must be valid value")
+        end
+      end
+    end
   end
 end
