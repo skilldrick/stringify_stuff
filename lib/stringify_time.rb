@@ -8,16 +8,16 @@ module StringifyTime
 
       define_method "#{name}_string=" do |time_str|
         begin
-          parsed = Time.zone.parse(time_str)
-          raise ArgumentError if parsed.nil?
+          if time_str.empty?
+            parsed = nil
+          else
+            parsed = Time.zone.parse(time_str)
+            raise ArgumentError if parsed.nil?
+          end
           write_attribute(name, parsed)
         rescue ArgumentError
           instance_variable_set("@#{name}_invalid", true)
         end
-      end
-
-      define_method "#{name}_invalid?" do
-        instance_variable_get("@#{name}_invalid")
       end
     end
 

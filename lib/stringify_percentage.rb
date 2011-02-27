@@ -8,13 +8,5 @@ module StringifyPercentage
       end
 
     end
-
-    define_method "percentage_strings_valid?" do
-      names.each do |name|
-        if instance_variable_get("@#{name}_invalid")
-          errors.add(name, "must be valid percentage")
-        end
-      end
-    end
   end
 end

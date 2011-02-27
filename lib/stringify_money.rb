@@ -10,15 +10,15 @@ module StringifyMoney
 
       define_method "#{name}_string=" do |val|
         begin
-          parsed = Float(val.sub('£', '')).round(2)
+          if val.empty?
+            parsed = nil
+          else
+            parsed = Float(val.sub('£', '')).round(2)
+          end
           send("#{name}=".to_sym, parsed)
         rescue ArgumentError
           instance_variable_set("@#{name}_invalid", true)
         end
-      end
-
-      define_method "#{name}_invalid?" do
-        instance_variable_get("@#{name}_invalid")
       end
     end
 
